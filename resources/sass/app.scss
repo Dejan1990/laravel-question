@@ -6,3 +6,11 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.media {
+    margin-bottom: 30px;
+
+    .ml-auto a:hover {
+        color: $white !important;
+    }
+}

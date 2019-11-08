@@ -11100,3 +11100,11 @@ a.text-dark:focus {
   }
 }
 
+.media {
+  margin-bottom: 30px;
+}
+
+.media .ml-auto a:hover {
+  color: #fff !important;
+}
+

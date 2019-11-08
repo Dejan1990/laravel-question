@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AskQuestionRequest;
 use App\Question;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $question = new Question();
+        return view('questions.create', compact('question'));
     }
 
     /**
@@ -34,9 +36,10 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AskQuestionRequest $request)
     {
-        //
+        $request->user()->questions()->create($request->all());
+        return redirect()->route('questions.index')->with('success', 'Your question has been submitted.');
     }
 
     /**
@@ -58,7 +61,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('questions.edit', compact('question'));
     }
 
     /**
@@ -68,9 +71,10 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(AskQuestionRequest $request, Question $question)
     {
-        //
+        $question->update($request->all());
+        return redirect('/questions')->with('success', 'Your question has been updated.');
     }
 
     /**
@@ -81,6 +85,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        return redirect('/questions')->with('success', 'Your question has been deleted.');
     }
 }

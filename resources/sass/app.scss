@@ -11,6 +11,47 @@
     margin-bottom: 30px;
 
     .ml-auto a:hover {
-        color: $white !important;
+        color: $color-white !important;
     }
 }
+
+.counters {
+    margin-right: 30px;
+    font-size: 12px;
+    text-align: center;
+
+    strong {
+        display: block;
+        font-size: 2em;
+    }
+
+    .vote, .answer {
+        width: 60px;
+        height: 60px;
+    }
+
+    .status {
+        &.unanswered {
+            border: none;
+        }
+
+        &.answered {
+            border: 1px solid $color-green;
+            color: $color-green;
+        }
+
+        &.answered-accepted {
+            background: $color-green;
+            color: $color-white;
+        }
+    }
+
+    .view {
+        margin-top: 10px;
+    }
+}
+
+form.form-delete {
+    display: inline;
+}
+
